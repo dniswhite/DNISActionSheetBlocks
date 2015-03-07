@@ -124,8 +124,17 @@
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     NSLog(@"blockDidDismissWithButton was called");
-    if ([self blockDidDismissWithButton] != nil) {
-        [self blockDidDismissWithButton](actionSheet, buttonIndex);
+
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        NSLog(@"blockDidDismissWithButton was called for the destructive button.");
+
+        if ([self blockDestructiveDismissButton] != nil) {
+            [self blockDestructiveDismissButton](actionSheet, buttonIndex);
+        }
+    } else {
+        if ([self blockDidDismissWithButton] != nil) {
+            [self blockDidDismissWithButton](actionSheet, buttonIndex);
+        }
     }
 }
 
@@ -137,5 +146,6 @@
         [self blockActionSheetCancel](actionSheet);
     }
 }
+
 
 @end

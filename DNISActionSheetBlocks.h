@@ -25,5 +25,5 @@ typedef void(^DNISActionSheet)(UIActionSheet * actionSheet);
 @property (strong) DNISActionSheetButtonIndex blockDidDismissWithButton;
 @property (strong) DNISActionSheetButtonIndex blockWillDismissWithButton;
 @property (strong) DNISActionSheet blockActionSheetCancel;
-
+@property (strong) DNISActionSheetButtonIndex blockDestructiveDismissButton;
 @end
